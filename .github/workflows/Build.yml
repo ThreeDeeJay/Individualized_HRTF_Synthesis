@@ -1,0 +1,17 @@
+name: Build
+on: [push]
+jobs:
+  Windows:
+    name: Run MATLAB Build
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v1
+        with:
+          release: R2021b
+      - name: Run build
+        uses: matlab-actions/run-build@v1
+        with:
+          tasks: "Individualized HRTF App/eac_individualized_hrtf.mlappinstall"
